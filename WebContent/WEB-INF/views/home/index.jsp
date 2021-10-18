@@ -231,7 +231,7 @@
 					<div class="single-best-receipe-area mb-30">
 						<img src="resources/img/bg-img/r1.jpg" alt="">
 						<div class="receipe-content">
-							<a href="receipe-post.html"> Sushi món sushi cá hồi </a>
+							<a href="receipe-post.html"> Sushi cá hồi </a>
 							<div class="ratings">
 								<i class="fa fa-star" aria-hidden="true"></i> <i
 									class="fa fa-star" aria-hidden="true"></i> <i
