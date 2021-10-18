@@ -1,0 +1,298 @@
+package ptithcm.controller;
+
+import java.io.File;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.transaction.Transactional;
+
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import ptithcm.entity.Product;
+import ptithcm.entity.User;
+
+
+
+
+@Transactional
+@Controller
+@RequestMapping("/admin/")
+public class AdminController {
+	@Autowired
+	SessionFactory factory;
+	
+
+	@RequestMapping("index")
+	public String index(ModelMap model){
+		return "admin/index";
+	}
+	
+	//Quản lí người dùng
+	@RequestMapping("user")
+	public String user(ModelMap model) {
+		Session session = factory.getCurrentSession();
+		String hql = "from User";
+		Query query = session.createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<User> list = query.list();
+		model.addAttribute("users", list);
+		return "user/index";		
+	}
+	
+	@RequestMapping(value="insertkh", method=RequestMethod.GET)
+	public String insertkh(ModelMap model){
+		model.addAttribute("user", new User());
+		return "user/insert";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="insertkh",method=RequestMethod.POST)
+	public String insertkh(ModelMap model, @ModelAttribute("user")User user,
+			BindingResult errors){
+		Session session = factory.getCurrentSession();
+		String hql = "FROM User " + "WHERE username like '%"+user.getUsername()+"%'";
+		Query query = session.createQuery(hql);
+		List<User> list = query.list();	
+		if(user.getName().trim().length()==0){
+			errors.rejectValue("name", "user", "Vui lòng nhập tên !");
+		}
+		if(user.getAddress().trim().length()==0){
+			errors.rejectValue("address", "user", "Vui lòng nhập địa chỉ !");
+		}
+		if(user.getPhone().trim().length()==0){
+			errors.rejectValue("phone", "user", "Vui lòng nhập số điện thoại !");
+		}
+		if(user.getEmail().trim().length()==0){
+			errors.rejectValue("email", "user", "Vui lòng nhập email !");
+		}
+		if(user.getPassword().trim().length()==0){
+			errors.rejectValue("password", "user", "Vui lòng nhập mật khẩu !");
+		}
+		if(user.getUsername().trim().length()==0){
+			errors.rejectValue("username", "user", "Vui lòng nhập tài khoản !");
+		}
+		else if(list.size()!=0){
+			errors.rejectValue("username", "user", "Tài khoản đã tồn tại !");
+		}
+		
+		try
+			{
+				if (errors.hasErrors()) 
+				{
+					model.addAttribute("message", "Vui lòng sửa các lỗi sau");
+				} 
+				else
+				{
+					session.save(user);
+					model.addAttribute("message", "Thêm thành công");
+					return "redirect:/admin/user.htm";
+				}
+			}
+		catch (Exception e) {
+				// TODO: handle exception
+				model.addAttribute("message", "Thêm thất bại");
+		}
+		return "user/insert";
+	}
+	
+	@RequestMapping(value = "updatekh/{idUser}", method = RequestMethod.GET)
+	public String updatekh(ModelMap model, @PathVariable("idUser")Integer s) {
+		Session session = factory.openSession();
+		User user = (User) session.get(User.class, s);
+		model.addAttribute("users", user);
+		return "user/update";
+	}
+	
+	@RequestMapping(value = "updatekh/{idUser}", method = RequestMethod.POST)
+	public String updatekh(ModelMap model, @ModelAttribute("users") User users
+			, BindingResult errors) {
+		Session session = factory.getCurrentSession();
+		if(users.getName().trim().length()==0){
+			errors.rejectValue("name", "users", "Vui lòng nhập tên !");
+		}
+		if(users.getAddress().trim().length()==0){
+			errors.rejectValue("address", "users", "Vui lòng nhập địa chỉ !");
+		}
+		if(users.getPhone().trim().length()==0){
+			errors.rejectValue("phone", "users", "Vui lòng nhập số điện thoại !");
+		}
+		if(users.getEmail().trim().length()==0){
+			errors.rejectValue("email", "users", "Vui lòng nhập email !");
+		}
+		if(users.getPassword().trim().length()==0){
+			errors.rejectValue("password", "users", "Vui lòng nhập mật khẩu !");
+		}
+		else{
+		try
+			{
+				if (errors.hasErrors()) 
+				{
+					model.addAttribute("message", "Vui lòng sửa các lỗi sau");
+				} 
+				else{
+					session.update(users);
+					model.addAttribute("message", "Sửa thành công");
+					return "redirect:/admin/user.htm";
+				}
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+				model.addAttribute("message", "Sửa thất bại");
+			}
+		}
+		return "user/update";
+	}
+	
+	@SuppressWarnings("finally")
+	@RequestMapping(value = "deletekh/{idUser}", method = RequestMethod.GET)
+	public String deletekh(ModelMap model, @PathVariable("idUser")Integer s) {
+		Session se = factory.openSession();
+		Transaction t = se.beginTransaction();
+		User user = (User) se.get(User.class, s);
+		try {
+			se.delete(user);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		finally{
+			return "redirect:/admin/user.htm";
+		}
+	}
+	
+	//Quản lí sản phẩm
+	@RequestMapping("product")
+	public String dssp(ModelMap model){
+		Session se = factory.getCurrentSession();
+		String hql = "from Product";
+		Query query = se.createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Product> list = query.list();
+		model.addAttribute("products", list);
+		return "product/index";
+	}
+		
+	@Autowired
+	ServletContext context;
+	
+	@RequestMapping(value="insertsp", method=RequestMethod.GET)
+	public String insertsp(ModelMap model){
+		model.addAttribute("product", new Product());
+		return "product/insert";
+	}
+	
+	@RequestMapping(value="insertsp", method=RequestMethod.POST)
+	public String insertsp(ModelMap model, @ModelAttribute("product")Product product,
+			BindingResult errors,
+			@RequestParam("image") MultipartFile image){
+		Session se= factory.getCurrentSession();
+		String hql = "FROM Product " + "WHERE name like '%"+product.getName()+"%'";
+		Query query = se.createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Product> list = query.list();
+		if(product.getName().trim().length()==0){
+			errors.rejectValue("name", "product", "Vui lòng nhập tên sản phẩm !");
+		}
+		else if(list.size()!=0){
+			errors.rejectValue("name", "product", "Tên sản phẩm đã tồn tại !");
+		}
+		if(product.getPrice()==null){
+			errors.rejectValue("price", "product", "Vui lòng nhập giá sản phẩm !");
+		}
+		if(product.getType()==null){
+			errors.rejectValue("type", "product", "Vui lòng nhập loại sản phẩm !");
+		}
+		if(product.getNumber() == null){
+			errors.rejectValue("number", "product", "Vui lòng nhập số lượng !");
+		}
+		else{
+			try {
+					String path = context.getRealPath("resources/img/"+image.getOriginalFilename()) ;
+					image.transferTo(new File(path));
+					
+					product.setImage(image.getOriginalFilename());
+					se.save(product);
+					model.addAttribute("message", "Thêm thành công");
+					return "redirect:/admin/product.htm";
+			} catch (Exception e) {
+				model.addAttribute("message", "Thêm thất bại");
+			}
+		}
+		return "product/insert";
+	}
+	
+	@RequestMapping(value = "updatesp/{idProduct}", method = RequestMethod.GET)
+	public String updatesp(ModelMap model, @PathVariable("idProduct")Integer s) {
+		Session session = factory.openSession();
+		Product prod = (Product) session.get(Product.class, s);
+		model.addAttribute("products", prod);
+		return "product/update";
+	}
+	
+	@RequestMapping(value = "updatesp", method = RequestMethod.POST)
+	public String updatesp(ModelMap model, @ModelAttribute("products")Product products,
+			BindingResult errors){
+		Session session = factory.getCurrentSession();
+		if(products.getName().trim().length()==0){
+			errors.rejectValue("name", "products", "Vui lòng nhập tên sản phẩm !");
+		}
+		if(products.getPrice()==null){
+			errors.rejectValue("price", "products", "Vui lòng nhập giá sản phẩm !");
+		}
+		if(products.getNumber() == null){
+			errors.rejectValue("number", "products", "Vui lòng nhập số lượng !");
+		}
+		else{
+			try
+			{
+				if (errors.hasErrors()) 
+				{
+					model.addAttribute("message", "Vui lòng sửa các lỗi sau");
+				} 
+				else
+				{
+					session.update(products);
+					model.addAttribute("message", "Sửa thành công");
+					return "redirect:/admin/product.htm";
+				}
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+				model.addAttribute("message", "Sửa thất bại");
+			}
+		}
+		return "product/update";
+	}
+	
+	@SuppressWarnings("finally")
+	@RequestMapping(value = "deletesp/{idProduct}", method = RequestMethod.GET)
+	public String deletesp(ModelMap model, @PathVariable("idProduct") int maHH) {
+		Session se = factory.openSession();
+		Transaction t = se.beginTransaction();
+		Product pro = (Product) se.get(Product.class, maHH);
+		try {
+			se.delete(pro);
+			t.commit();
+		} catch (Exception e) {
+			t.rollback();
+		}
+		finally{
+			return "redirect:/admin/product.htm";
+		}
+		
+	}
+}
