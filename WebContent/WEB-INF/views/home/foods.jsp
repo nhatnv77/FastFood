@@ -7,10 +7,13 @@
 <head>
 <title>THỨC ĂN</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<link rel="icon" type="image/png"
-	href="${root}/resources/login/images/icons/favicon.ico" />
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="resources/img/core-img/favicon.ico">
+<link rel="stylesheet" href="resources/style.css">
+
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
@@ -33,12 +36,8 @@
 	href="${root}/resources/login/css/main.css">
 <!--===============================================================================================-->
 <!-- Core Stylesheet -->
-<link rel="stylesheet"
-	href="${root}/resources/doan/css/style.css">
-<link rel="stylesheet"
-	href="${root}/resources/style.css">
-
-
+<link rel="stylesheet" href="${root}/resources/doan/css/style.css">
+<link rel="stylesheet" href="${root}/resources/style.css">
 </head>
 
 <body>
@@ -87,16 +86,15 @@
 				<div class="container">
 					<!-- Menu -->
 					<nav class="classy-navbar justify-content-between"
-						id="deliciousNav" >
+						id="deliciousNav">
 
 						<!-- Logo -->
 						<a class="nav-brand" href="home.htm"><img
-							src="${root}/resources/img/core-img/logo.png"
-							alt=""></a>
+							src="${root}/resources/img/core-img/logo.png" alt=""></a>
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
-							<span class="navbarToggler"><span></span><span></span><span></span></span>
+							<span class="navbarToggler"></span>
 						</div>
 
 						<!-- Menu -->
@@ -112,41 +110,30 @@
 							<!-- Nav Start -->
 							<div class="classynav">
 								<ul>
-									<li ><a
-										href="${root}/home.htm">Trang
-											chủ</a></li>
-									<li class="active"><a href="${root}/food.htm">Thức
-											ăn</a></li>
-									<li><a href="${root}/drink.htm">Thức
-											uống</a></li>
-									<li><a
-										href="${root}/contact.htm">Liên
-											hệ</a></li>
+									<li><a href="${root}/home.htm">Trang chủ</a></li>
+									<li class="active"><a href="${root}/food.htm">Thức ăn</a></li>
+									<li><a href="${root}/drink.htm">Thức uống</a></li>
+									<li><a href="${root}/contact.htm">Liên hệ</a></li>
 									<li><a href="#">Tài khoản</a>
 										<ul class="dropdown">
-											<li><a
-												href="${root}/account/login.htm">Đăng
-													nhập</a></li>
-											<c:if test="${sessionScope.tk != null}">
-												<li><a
-													href="${root}/account/logout.htm">Đăng
-														xuất</a></li>
+											<c:if test="${sessionScope.tk == null}">
+												<li><a href="account/login.htm">Đăng nhập</a></li>
+												<li><a href="account/register.htm">Đăng ký</a></li>
 											</c:if>
-
-											<li><a
-												href="${root}/account/register.htm">Đăng
-													ký</a></li>
+											<c:if test="${sessionScope.tk != null}">
+												<li><a href="account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="account/logout.htm">Đăng xuất</a></li>
+											</c:if>
 										</ul></li>
+
 									<c:if test="${sessionScope.tk == null}">
-										<li><a
-											href="${root}/account/login.htm">Cart<i
+										<li><a href="account/login.htm">Cart<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 									<c:if test="${sessionScope.tk != null}">
-										<li><a href="cart.htm">Cart<i
+										<li><a href="cart.htm">Giỏ hàng<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
-
 								</ul>
 
 								<!-- Newsletter Form -->
@@ -178,7 +165,6 @@
 										<div class="product-item">
 											<div class="item-inner">
 												<div class="product-thumbnail">
-													<div class="icon-sale-label sale-left">Sale</div>
 													<div class="icon-new-label new-right">New</div>
 													<div class="pr-img-area">
 														<a title="Ipsums Dolors Untra"
@@ -197,21 +183,14 @@
 																<a href="#"> <i class="fa fa-heart"></i>
 																</a>
 															</div>
-															<div class="mt-button add_to_compare">
-																<a href="#"> <i class="fa fa-signal"></i>
-																</a>
-															</div>
-															<div class="mt-button quick-view">
-																<a href="#"> <i class="fa fa-search"></i>
-																</a>
-															</div>
 														</div>
 													</div>
 												</div>
 												<div class="item-info">
 													<div class="info-inner">
 														<div class="item-title">
-															<a title="Ipsums Dolors Untra" href="#">${item.name}</a>
+															<a title="Ipsums Dolors Untra"
+																href="${root }/detail/${item.idProduct}.htm">${item.name}</a>
 														</div>
 														<div class="item-content">
 															<div class="rating">
@@ -226,7 +205,7 @@
 																	</span>
 																</div>
 															</div>
-															<div class="pro-action">
+															<div > <!-- class="pro-action" -->
 																<c:if test="${sessionScope.tk != null}">
 																	<a
 																		href="${root}/cart/add.htm?id=${item.idProduct}&name=${item.name}&gia=${item.price}&image=${item.image}&soLuong=${1}"
@@ -234,8 +213,7 @@
 																		hàng</a>
 																</c:if>
 																<c:if test="${sessionScope.tk == null}">
-																	<a
-																		href="${root}/account/login.htm"
+																	<a href="${root}/account/login.htm"
 																		class="add-to-cart btn btn-danger">Thêm vô giỏ
 																		hàng</a>
 																</c:if>
@@ -270,9 +248,7 @@
 		<div class="insta-feeds d-flex flex-wrap">
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta1.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta1.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -281,9 +257,7 @@
 
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta2.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta2.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -292,9 +266,7 @@
 
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta3.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta3.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -303,9 +275,7 @@
 
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta4.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta4.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -314,9 +284,7 @@
 
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta5.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta5.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -325,9 +293,7 @@
 
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta6.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta6.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -336,9 +302,7 @@
 
 			<!-- Single Insta Feeds -->
 			<div class="single-insta-feeds">
-				<img
-					src="${root}/resources/img/bg-img/insta7.jpg"
-					alt="">
+				<img src="${root}/resources/img/bg-img/insta7.jpg" alt="">
 				<!-- Icon -->
 				<div class="insta-icon">
 					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -366,8 +330,7 @@
 					<!-- Footer Logo -->
 					<div class="footer-logo">
 						<a href="index.html"><img
-							src="${root}/resources/img/core-img/logo.png"
-							alt=""></a>
+							src="${root}/resources/img/core-img/logo.png" alt=""></a>
 					</div>
 					<!-- Copywrite -->
 					<p>
@@ -385,19 +348,15 @@
 			</div>
 		</div>
 	</footer>
-	<script
-		src="${root}/resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="${root}/resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
-	<script
-		src="${root}/resources/login/vendor/bootstrap/js/popper.js"></script>
+	<script src="${root}/resources/login/vendor/bootstrap/js/popper.js"></script>
 	<script
 		src="${root}/resources/login/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script
-		src="${root}/resources/login/vendor/select2/select2.min.js"></script>
+	<script src="${root}/resources/login/vendor/select2/select2.min.js"></script>
 	<!--===============================================================================================-->
-	<script
-		src="${root}/resources/login/vendor/tilt/tilt.jquery.min.js"></script>
+	<script src="${root}/resources/login/vendor/tilt/tilt.jquery.min.js"></script>
 	<script>
 		$('.js-tilt').tilt({
 			scale : 1.1
@@ -405,21 +364,16 @@
 	</script>
 
 	<!--===============================================================================================-->
-	<script
-		src="${root}/resources/login/js/main.js"></script>
+	<script src="${root}/resources/login/js/main.js"></script>
 
 	<!-- jQuery-2.2.4 js -->
-	<script
-		src="${root}/resources/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="${root}/resources/js/jquery/jquery-2.2.4.min.js"></script>
 	<!-- Popper js -->
-	<script
-		src="${root}/resources/js/bootstrap/popper.min.js"></script>
+	<script src="${root}/resources/js/bootstrap/popper.min.js"></script>
 	<!-- Bootstrap js -->
-	<script
-		src="${root}/resources/js/bootstrap/bootstrap.min.js"></script>
+	<script src="${root}/resources/js/bootstrap/bootstrap.min.js"></script>
 	<!-- All Plugins js -->
-	<script
-		src="${root}/resources/js/plugins/plugins.js"></script>
+	<script src="${root}/resources/js/plugins/plugins.js"></script>
 	<!-- Active js -->
 	<script src="${root}/resources/js/active.js"></script>
 
@@ -446,8 +400,7 @@
 		src="${root}/resources/doan/js/jquery-ui.js"></script>
 
 	<!-- main js -->
-	<script type="text/javascript"
-		src="${root}/resources/doan/js/main.js"></script>
+	<script type="text/javascript" src="${root}/resources/doan/js/main.js"></script>
 
 
 </body>

@@ -3,16 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
-<head>
 <c:set var="root" value="${pageContext.servletContext.contextPath}" />
+<head>
+<title>Fast Food | Home</title>
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Fast Food | Home</title>
 <link rel="icon" href="resources/img/core-img/favicon.ico">
-<!-- Core Stylesheet -->
 <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
@@ -39,7 +38,7 @@
 						<div class="top-social-info text-right">
 							<c:if test="${sessionScope.tk != null}">
 								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>
-									Xin chào ${sessionScope.tk}</a>
+									Xin chào ${sessionScope.tk} ♥</a>
 							</c:if>
 							<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
 							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -60,26 +59,21 @@
 					<!-- Menu -->
 					<nav class="classy-navbar justify-content-between"
 						id="deliciousNav">
-
 						<!-- Logo -->
 						<a class="nav-brand" href="home.htm"><img
 							src="resources/img/core-img/logo.png" alt=""></a>
-
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
-							<span class="navbarToggler"><span></span><span></span><span></span></span>
+							<span class="navbarToggler"></span>
 						</div>
-
 						<!-- Menu -->
 						<div class="classy-menu">
-
 							<!-- close btn -->
 							<div class="classycloseIcon">
 								<div class="cross-wrap">
 									<span class="top"></span><span class="bottom"></span>
 								</div>
 							</div>
-
 							<!-- Nav Start -->
 							<div class="classynav">
 								<ul>
@@ -89,12 +83,14 @@
 									<li><a href="contact.htm">Liên hệ</a></li>
 									<li><a href="#">Tài khoản</a>
 										<ul class="dropdown">
-											<li><a href="account/login.htm">Đăng nhập</a></li>
+											<c:if test="${sessionScope.tk == null}">
+												<li><a href="account/login.htm">Đăng nhập</a></li>
+												<li><a href="account/register.htm">Đăng ký</a></li>
+											</c:if>
 											<c:if test="${sessionScope.tk != null}">
+												<li><a href="account/update.htm">Thay đổi thông tin</a></li>
 												<li><a href="account/logout.htm">Đăng xuất</a></li>
 											</c:if>
-
-											<li><a href="account/register.htm">Đăng ký</a></li>
 										</ul></li>
 
 									<c:if test="${sessionScope.tk == null}">
@@ -105,7 +101,6 @@
 										<li><a href="cart.htm">Giỏ hàng<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
-
 								</ul>
 
 								<!-- Newsletter Form -->
@@ -511,8 +506,8 @@
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						All rights reserved<br> <b text-align: center>GROUP 16
-							with <i class="fa fa-heart" aria-hidden="true"></i>
+						All rights reserved<br> <b>GROUP 16 with <i
+							class="fa fa-heart" aria-hidden="true"></i>
 						</b>
 					</p>
 				</div>

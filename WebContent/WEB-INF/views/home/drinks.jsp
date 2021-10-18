@@ -118,20 +118,15 @@
 											hệ</a></li>
 									<li><a href="#">Tài khoản</a>
 										<ul class="dropdown">
-											<li><a
-												href="${root}/account/login.htm">Đăng
-													nhập</a></li>
-											<c:if test="${sessionScope.tk != null}">
-												<li><a
-													href="${root}/account/logout.htm">Đăng
-														xuất</a></li>
+											<c:if test="${sessionScope.tk == null}">
+												<li><a href="account/login.htm">Đăng nhập</a></li>
+												<li><a href="account/register.htm">Đăng ký</a></li>
 											</c:if>
-
-											<li><a
-												href="${root}/account/register.htm">Đăng
-													ký</a></li>
+											<c:if test="${sessionScope.tk != null}">
+												<li><a href="account/logout.htm">Sửa thông tin</a></li>
+												<li><a href="account/logout.htm">Đăng xuất</a></li>
+											</c:if>
 										</ul></li>
-									</li>
 									<c:if test="${sessionScope.tk == null}">
 										<li><a
 											href="${root}/account/login.htm">Cart<i
@@ -141,7 +136,6 @@
 										<li><a href="cart.htm">Cart<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
-
 								</ul>
 
 								<!-- Newsletter Form -->
