@@ -1,139 +1,162 @@
-<%@ page language="java"
-    pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+<%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <c:set var="root" value="${pageContext.servletContext.contextPath}" />
+<base href="${pageContext.servletContext.contextPath}/">
 <head>
+<title>CHI TIẾT SẢN PHẨM</title>
 <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png"
+	href="${root}/resources/login/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
 
-	<script
-	  src="https://code.jquery.com/jquery-3.5.1.js"
-	  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-	  crossorigin="anonymous">
-	</script>
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <!-- Title -->
-    <title>CHI TIẾT SẢN PHẨM</title>
-	<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="${root}/resources/login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/util.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/main.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/css/util.css">
-	<link rel="stylesheet" type="text/css" href="${root}/resources/login/css/main.css">
-    <!-- Favicon -->
-    <link rel="icon" href="${root}/resources/img/core-img/favicon.ico">
+<!-- Core Stylesheet -->
+<link rel="stylesheet"
+	href="${root}/resources/doan/css/style.css">
+<link rel="stylesheet"
+	href="${root}/resources/style.css">
 
-    <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="${root}/resources/doan/css/style.css">
-    <link rel="stylesheet" href="${root}/resources/style.css">
+
 </head>
+
 <body>
 	<header class="header-area">
 
-        <!-- Top Header Area -->
-        <div class="top-header-area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-between">
-                    <!-- Breaking News -->
-                    <div class="col-12 col-sm-6">
-                        <div class="breaking-news">
-                            <div id="breakingNewsTicker" class="ticker">
-                                <ul>
-                                    <li><a href="#">Hello World!</a></li>
-                                    <li><a href="#">Welcome to NamBino Restaurant !</a></li>
-                                    <li><a href="#">Hello Delicious!</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+		<!-- Top Header Area -->
+		<div class="top-header-area">
+			<div class="container h-100">
+				<div class="row h-100 align-items-center justify-content-between">
+					<!-- Breaking News -->
+					<div class="col-12 col-sm-6">
+						<div class="breaking-news">
+							<div id="breakingNewsTicker" class="ticker">
+								<ul>
+									<li><a href="#"><b>Chào mừng đến với Fast Food</b></a></li>
+									<li><a href="#"><b>Địa chỉ: 97 Man Thiện, Hiệp
+												Phú, Q9, TP Thủ Đức</b></a></li>
+									<li><a href="#"><b>Số điện thoại: +84 979 888 999</b></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
                     <!-- Top Social Info -->
-                    <div class="col-12 col-sm-6">
-                        <div class="top-social-info text-right">
-                        <c:if test="${sessionScope.tk != null}">
-	                        	<a href="#"><i class="fa fa-user" aria-hidden="true"></i> Xin chào ${sessionScope.tk}</a>
-	                        </c:if>
-                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                   <div class="col-12 col-sm-6">
+						<div class="top-social-info text-right">
+							<c:if test="${sessionScope.tk != null}">
+								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+									Xin chào ${sessionScope.tk}</a>
+							</c:if>
+							<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Navbar Area -->
-        <div class="delicious-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="deliciousNav" style="margin-left: 220px;">
+		<!-- Navbar Area -->
+		<div class="delicious-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between"
+						id="deliciousNav">
 
-                        <!-- Logo -->
-                        <a class="nav-brand" href="trangchu.htm"><img src="${root}/resources/img/core-img/logo.png" alt=""></a>
+						<!-- Logo -->
+						<a class="nav-brand" href="home.htm"><img
+							src="${root}/resources/img/core-img/logo.png"
+							alt=""></a>
 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
+						<!-- Navbar Toggler -->
+						<div class="classy-navbar-toggler">
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
+						</div>
 
-                        <!-- Menu -->
-                        <div class="classy-menu">
+						<!-- Menu -->
+						<div class="classy-menu">
 
-                            <!-- close btn -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
+							<!-- close btn -->
+							<div class="classycloseIcon">
+								<div class="cross-wrap">
+									<span class="top"></span><span class="bottom"></span>
+								</div>
+							</div>
 
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li class="active"><a href="http://localhost:8080/DoAnWeb/home.htm">Home</a></li>
-                                    <li><a href="http://localhost:8080/DoAnWeb/doan.htm">Foods</a></li>
-                                    <li><a href="http://localhost:8080/DoAnWeb/douong.htm">Drinks</a></li>
-                                    <li><a href="http://localhost:8080/DoAnWeb/contact.htm">Contact</a></li>
-                                    <li><a href="#">Account</a>
-                                    	<ul class="dropdown">
-                                            <li><a href="http://localhost:8080/DoAnWeb/account/dangnhap.htm">Login</a></li>
-                                            <li><a href="account/dangxuat.htm">Logout</a></li>
-                                            <li><a href="http://localhost:8080/DoAnWeb/account/dangky.htm">Register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="giohang.htm">Cart<i class="fa fa-shopping-cart"></i></a></li>
-                                    
-                                </ul>
+							<!-- Nav Start -->
+							<div class="classynav">
+								<ul>
+									<li ><a
+										href="${root}/home.htm">Trang
+											chủ</a></li>
+									<li><a href="${root}/food.htm">Thức
+											ăn</a></li>
+									<li class="active" ><a href="${root}/drink.htm">Thức
+											uống</a></li>
+									<li><a
+										href="${root}/contact.htm">Liên
+											hệ</a></li>
+									<li><a href="#">Tài khoản</a>
+										<ul class="dropdown">
+											<li><a
+												href="${root}/account/login.htm">Đăng
+													nhập</a></li>
+											<c:if test="${sessionScope.tk != null}">
+												<li><a
+													href="${root}/account/logout.htm">Đăng
+														xuất</a></li>
+											</c:if>
 
-                                <!-- Newsletter Form -->
-                                <div class="search-btn">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
+											<li><a
+												href="${root}/account/register.htm">Đăng
+													ký</a></li>
+										</ul></li>
+									</li>
+									<c:if test="${sessionScope.tk == null}">
+										<li><a
+											href="${root}/account/login.htm">Cart<i
+												class="fa fa-shopping-cart"></i></a></li>
+									</c:if>
+									<c:if test="${sessionScope.tk != null}">
+										<li><a href="cart.htm">Cart<i
+												class="fa fa-shopping-cart"></i></a></li>
+									</c:if>
 
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+								</ul>
+
+								<!-- Newsletter Form -->
+								<div class="search-btn">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</div>
+
+							</div>
+							<!-- Nav End -->
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
 
 <!-- CONTENT -->
 
@@ -184,7 +207,7 @@
 <%-- 	                  <button class="add-to-cart  button pro-add-to-cart abc" data-id="${prod.idProduct} id="btncart" > --%>
 <!-- 	                	<span><i class="fa fa-shopping-basket"></i> Thêm vô giỏ hàng</span> -->
 <!-- 	                  </button> -->
-						<a class=" btn btn-danger abc" type="button" href="http://localhost:8080/DoAnWeb/giohang.htm?
+						<a class=" btn btn-danger abc" type="button" href="${root}/giohang.htm?
 						id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${3}">
 							<span><i class="fa fa-shopping-basket"></i> Thêm vô giỏ hàng</span>
          				</a>
@@ -307,65 +330,77 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </footer>
-	
-		<script src="${root}/resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="${root}/resources/login/vendor/bootstrap/js/popper.js"></script>
-	<script src="${root}/resources/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="${root}/resources/login/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="${root}/resources/login/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
+	<script
+		src="${root}/resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/vendor/bootstrap/js/popper.js"></script>
+	<script
+		src="${root}/resources/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/vendor/tilt/tilt.jquery.min.js"></script>
+	<script>
 		$('.js-tilt').tilt({
-			scale: 1.1
+			scale : 1.1
 		})
 	</script>
 
-<!--===============================================================================================-->
-	<script src="${root}/resources/login/js/main.js"></script>
-	
-	     <!-- jQuery-2.2.4 js -->
-    <script src="${root}/resources/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="${root}/resources/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="${root}/resources/js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="${root}/resources/js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="${root}/resources/js/active.js"></script>
-    
-    
-    <script type="text/javascript" src="${root}/resources/doan/js/jquery.min.js"></script> 
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/js/main.js"></script>
 
-<!-- bootstrap js --> 
-<script type="text/javascript" src="${root}/resources/doan/js/bootstrap.min.js"></script> 
+	<!-- jQuery-2.2.4 js -->
+	<script
+		src="${root}/resources/js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script
+		src="${root}/resources/js/bootstrap/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script
+		src="${root}/resources/js/bootstrap/bootstrap.min.js"></script>
+	<!-- All Plugins js -->
+	<script
+		src="${root}/resources/js/plugins/plugins.js"></script>
+	<!-- Active js -->
+	<script src="${root}/resources/js/active.js"></script>
 
-<!-- owl.carousel.min js --> 
-<script type="text/javascript" src="${root}/resources/doan/js/owl.carousel.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 
-<!-- bxslider js --> 
-<script type="text/javascript" src="${root}/resources/doan/js/jquery.bxslider.js"></script> 
+	<!-- bootstrap js -->
+	<script type="text/javascript"
+		src="${root}/resources/doan/js/bootstrap.min.js"></script>
 
-<!-- jquery.mobile-menu js --> 
-<script type="text/javascript" src="${root}/resources/doan/js/mobile-menu.js"></script> 
+	<!-- owl.carousel.min js -->
+	<script type="text/javascript"
+		src="${root}/resources/doan/js/owl.carousel.min.js"></script>
 
-<!--jquery-ui.min js --> 
-<script type="text/javascript" src="${root}/resources/doan/js/jquery-ui.js"></script> 
+	<!-- bxslider js -->
+	<script type="text/javascript"
+		src="${root}/resources/doan/js/jquery.bxslider.js"></script>
 
-<!-- main js --> 
-<script type="text/javascript" src="${root}/resources/doan/js/main.js"></script>
+	<!-- jquery.mobile-menu js -->
+	<script type="text/javascript"
+		src="${root}/resources/doan/js/mobile-menu.js"></script>
+
+	<!--jquery-ui.min js -->
+	<script type="text/javascript"
+		src="${root}/resources/doan/js/jquery-ui.js"></script>
+
+	<!-- main js -->
+	<script type="text/javascript"
+		src="${root}/resources/doan/js/main.js"></script>
 
  <script>
         $(document).ready(function () {
             $(".abc").click(function (e) {
             	var slg = document.getElementById('qty').val();
-            	href = "http://localhost:8080/DoAnWeb/giohang.htm?id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${slg}";
-//             	let link = $(this).attr("giohang.htm?id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${slg}");
-//            	let link = $(this).attr("href");
+            	href = "${root}/cart1.htm?id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${slg}";
             	e.preventDefault();
-                window.location = "http://localhost:8080/DoAnWeb/giohang.htm?id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${slg}";;
+                window.location = "${root}/giohang.htm?id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${slg}";;
             }
  </script>
 </body>

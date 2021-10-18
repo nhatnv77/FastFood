@@ -5,7 +5,7 @@
 <html>
 <c:set var="root" value="${pageContext.servletContext.contextPath}" />
 <head>
-<title>ĐỒ ĂN</title>
+<title>THỨC ĂN</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -87,7 +87,7 @@
 				<div class="container">
 					<!-- Menu -->
 					<nav class="classy-navbar justify-content-between"
-						id="deliciousNav" style="margin-left: 105px">
+						id="deliciousNav" >
 
 						<!-- Logo -->
 						<a class="nav-brand" href="home.htm"><img
