@@ -168,13 +168,11 @@
 													<div class="icon-new-label new-right">New</div>
 													<div class="pr-img-area">
 														<a title="Ipsums Dolors Untra"
-															href="${root }/detail/${item.idProduct}.htm">
-															<figure>
-																<img class="first-img"
-																	src="${root}/resources/img/products/${item.image}">
-																<img class="hover-img"
-																	src="${root}/resources/img/products/${item.image}">
-															</figure>
+															href="${root }/detail/${item.idProduct}.htm"> <img
+															class="first-img"
+															src="${root}/resources/img/products/${item.image}">
+															<%-- <img class="hover-img"
+																	src="${root}/resources/img/products/${item.image}"> --%>
 														</a>
 													</div>
 													<div class="pr-info-area">
@@ -205,7 +203,8 @@
 																	</span>
 																</div>
 															</div>
-															<div > <!-- class="pro-action" -->
+															<div>
+																<!-- class="pro-action" -->
 																<c:if test="${sessionScope.tk != null}">
 																	<a
 																		href="${root}/cart/add.htm?id=${item.idProduct}&name=${item.name}&gia=${item.price}&image=${item.image}&soLuong=${1}"
