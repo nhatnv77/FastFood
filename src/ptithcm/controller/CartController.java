@@ -15,7 +15,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ptithcm.bean.CartItem;
@@ -23,15 +22,16 @@ import ptithcm.entity.Product;
 
 @Controller
 @Transactional
-@RequestMapping("/cart/")
+@RequestMapping("/cart")
 public class CartController {
 	@Autowired
 	SessionFactory factory;
 
 	List<CartItem> list = new ArrayList<CartItem>();
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String cart(ModelMap modelMap) {
+	@RequestMapping()
+	public String cart(ModelMap model) {
+		model.addAttribute("tongTien", this.tinhTongtien(list));
 		return "home/cart";
 	}
 
@@ -57,26 +57,33 @@ public class CartController {
 
 	@RequestMapping(value = "add/{idProduct}")
 	public String giohang(ModelMap model, @PathVariable("idProduct") int idProd, @RequestParam("sl") int amount) {
-		Session session = factory.getCurrentSession();
-		Product prod = (Product) session.get(Product.class, idProd);
-		boolean isExist = false;
-		for (CartItem item : list) {
-			if (item.getId() == prod.getIdProduct()) {
-				item.setAmount(item.getAmount() + amount);
-				isExist = true;
-				break;
+		if (amount <= 0) {
+			return "home/cart";
+		}
+		try {
+			Session session = factory.getCurrentSession();
+			Product prod = (Product) session.get(Product.class, idProd);
+			boolean isExist = false;
+			for (CartItem item : list) {
+				if (item.getId() == prod.getIdProduct()) {
+					item.setAmount(item.getAmount() + amount);
+					isExist = true;
+					break;
+				}
 			}
+			if (!isExist) {
+				CartItem newItem = new CartItem();
+				newItem.setId(prod.getIdProduct());
+				newItem.setName(prod.getName());
+				newItem.setPrice(prod.getPrice());
+				newItem.setAmount(amount);
+				newItem.setImage(prod.getImage());
+				list.add(newItem);
+			}
+			model.addAttribute("tongTien", this.tinhTongtien(list));
+		} catch (Exception e) {
+			return "redirect:/cart.htm";
 		}
-		if (!isExist) {
-			CartItem newItem = new CartItem();
-			newItem.setId(prod.getIdProduct());
-			newItem.setName(prod.getName());
-			newItem.setPrice(prod.getPrice());
-			newItem.setAmount(amount);
-			newItem.setImage(prod.getImage());
-			list.add(newItem);
-		}
-		model.addAttribute("tongTien", this.tinhTongtien(list));
 		return "home/cart";
 	}
 

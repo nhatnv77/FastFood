@@ -11,8 +11,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="resources/img/core-img/favicon.ico">
-<link rel="stylesheet" href="resources/style.css">
+<link rel="icon" href="${root}/resources/img/core-img/favicon.ico">
+<link rel="stylesheet" href="${root}/resources/style.css">
 
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
@@ -117,21 +117,21 @@
 									<li><a href="#">Tài khoản</a>
 										<ul class="dropdown">
 											<c:if test="${sessionScope.tk == null}">
-												<li><a href="account/login.htm">Đăng nhập</a></li>
-												<li><a href="account/register.htm">Đăng ký</a></li>
+												<li><a href="${root}/account/login.htm">Đăng nhập</a></li>
+												<li><a href="${root}/account/register.htm">Đăng ký</a></li>
 											</c:if>
 											<c:if test="${sessionScope.tk != null}">
-												<li><a href="account/update.htm">Thay đổi thông tin</a></li>
-												<li><a href="account/logout.htm">Đăng xuất</a></li>
+												<li><a href="${root}/account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
 											</c:if>
 										</ul></li>
 
 									<c:if test="${sessionScope.tk == null}">
-										<li><a href="account/login.htm">Cart<i
+										<li><a href="${root}/account/login.htm">Cart<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 									<c:if test="${sessionScope.tk != null}">
-										<li><a href="cart.htm">Giỏ hàng<i
+										<li><a href="${root}/cart.htm">Giỏ hàng<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 								</ul>
