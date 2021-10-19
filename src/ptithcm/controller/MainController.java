@@ -42,24 +42,6 @@ public class MainController {
 		return "home/contact";
 	}
 
-	/*
-	 * @RequestMapping(value = "food", method = RequestMethod.GET) public String
-	 * sanpham(ModelMap model , HttpServletRequest request) { Session session =
-	 * factory.getCurrentSession(); String hql =
-	 * "From Product where type like '%Food%'"; Query query =
-	 * session.createQuery(hql);
-	 * 
-	 * @SuppressWarnings("unchecked") List<Product> list = query.list();
-	 * 
-	 * PagedListHolder pagedListHolder = new PagedListHolder(list); int page =
-	 * ServletRequestUtils.getIntParameter(request, "p", 0);
-	 * pagedListHolder.setPage(page); pagedListHolder.setMaxLinkedPages(5); ;
-	 * pagedListHolder.setPageSize(2);
-	 * 
-	 * 
-	 * model.addAttribute("pagedListHolder", pagedListHolder); return "home/foods";
-	 * }
-	 */
 	public List<Product> getFood() {
 		Session session = factory.getCurrentSession();
 		String hql = "From Product where type like '%Food%'";
@@ -94,28 +76,18 @@ public class MainController {
 	@RequestMapping(value = "drink", method = RequestMethod.GET)
 	public String nuoc(HttpServletRequest request, ModelMap model, @ModelAttribute("product") Product product) {
 		List<Product> products = this.getDrink();
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		PagedListHolder pagedListHolder = new PagedListHolder(products);
 		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);
 		pagedListHolder.setMaxLinkedPages(20);
-		;
-		pagedListHolder.setPageSize(8);
+		pagedListHolder.setPageSize(10);
 		model.addAttribute("pagedListHolder", pagedListHolder);
 
 		return "home/drinks";
 	}
 	
-	/*
-	 * @RequestMapping(value = "drink", method = RequestMethod.GET) public String
-	 * sanphamdrink(ModelMap model) { Session session = factory.getCurrentSession();
-	 * String hql = "From Product where type like '%Drink%'"; Query query =
-	 * session.createQuery(hql);
-	 * 
-	 * @SuppressWarnings("unchecked") List<Product> list = query.list();
-	 * model.addAttribute("drinks", list); return "home/drinks"; }
-	 */
-
+	
 	@RequestMapping(value = "detail/{idProduct}", method = RequestMethod.GET)
 	public String chitietsp(ModelMap model, @PathVariable("idProduct") int idProd) {
 		Session session = factory.getCurrentSession();

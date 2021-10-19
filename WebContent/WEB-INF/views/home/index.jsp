@@ -5,7 +5,7 @@
 <html>
 <c:set var="root" value="${pageContext.servletContext.contextPath}" />
 <head>
-<title>Fast Food | Home</title>
+<title>Fast Food</title>
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -246,9 +246,9 @@ ul ul, ol ul {
 .v-middle {
 	vertical-align: middle
 }
-.f-left, .left {
+/* .f-left, .left {
 	float: left !important
-}
+} */
 .f-right, .right {
 	float: right !important
 }
