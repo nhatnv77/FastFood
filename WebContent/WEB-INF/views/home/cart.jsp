@@ -59,21 +59,26 @@
 					<!-- Menu -->
 					<nav class="classy-navbar justify-content-between"
 						id="deliciousNav">
+
 						<!-- Logo -->
-						<a class="nav-brand" href="home.htm"><img
+						<a class="nav-brand" href="${root}/home.htm"><img
 							src="${root}/resources/img/core-img/logo.png" alt=""></a>
+
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
-							<span class="navbarToggler"></span>
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
 						</div>
+
 						<!-- Menu -->
 						<div class="classy-menu">
+
 							<!-- close btn -->
 							<div class="classycloseIcon">
 								<div class="cross-wrap">
 									<span class="top"></span><span class="bottom"></span>
 								</div>
 							</div>
+
 							<!-- Nav Start -->
 							<div class="classynav">
 								<ul>
@@ -88,7 +93,8 @@
 												<li><a href="${root}/account/register.htm">Đăng ký</a></li>
 											</c:if>
 											<c:if test="${sessionScope.tk != null}">
-												<li><a href="${root}/account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="${root}/account/update.htm">Thay đổi
+														thông tin</a></li>
 												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
 											</c:if>
 										</ul></li>
@@ -98,8 +104,9 @@
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 									<c:if test="${sessionScope.tk != null}">
-										<li class="active"><a href="${root}/cart.htm">Giỏ hàng<i
-												class="fa fa-shopping-cart"></i></a></li>
+										<li class="active"><a href="${root}/cart.htm">Giỏ
+												hàng<i class="fa fa-shopping-cart"></i>
+										</a></li>
 									</c:if>
 								</ul>
 

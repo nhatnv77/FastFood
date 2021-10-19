@@ -83,21 +83,26 @@
 					<!-- Menu -->
 					<nav class="classy-navbar justify-content-between"
 						id="deliciousNav">
+
 						<!-- Logo -->
 						<a class="nav-brand" href="${root}/home.htm"><img
 							src="${root}/resources/img/core-img/logo.png" alt=""></a>
+
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
-							<span class="navbarToggler"></span>
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
 						</div>
+
 						<!-- Menu -->
 						<div class="classy-menu">
+
 							<!-- close btn -->
 							<div class="classycloseIcon">
 								<div class="cross-wrap">
 									<span class="top"></span><span class="bottom"></span>
 								</div>
 							</div>
+
 							<!-- Nav Start -->
 							<div class="classynav">
 								<ul>

@@ -78,8 +78,8 @@
 						id="deliciousNav">
 
 						<!-- Logo -->
-						<a class="nav-brand" href="home.htm"><img
-							src="resources/img/core-img/logo.png" alt=""></a>
+						<a class="nav-brand" href="${root}/home.htm"><img
+							src="${root}/resources/img/core-img/logo.png" alt=""></a>
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">

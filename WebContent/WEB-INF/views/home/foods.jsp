@@ -98,7 +98,7 @@
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
-							<span class="navbarToggler"></span>
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
 						</div>
 
 						<!-- Menu -->
