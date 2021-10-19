@@ -3,6 +3,8 @@ package ptithcm.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,11 +22,12 @@ import ptithcm.bean.CartItem;
 import ptithcm.entity.Product;
 
 @Controller
+@Transactional
 @RequestMapping("/cart/")
 public class CartController {
-
 	@Autowired
 	SessionFactory factory;
+
 	List<CartItem> list = new ArrayList<CartItem>();
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -77,7 +80,6 @@ public class CartController {
 		return "home/cart";
 	}
 
-	
 	@RequestMapping("deleteItem")
 	public String deleteItem(ModelMap model, @RequestParam("id") int idItem) {
 		int index = 0;
@@ -90,5 +92,5 @@ public class CartController {
 		model.addAttribute("tongTien", this.tinhTongtien(list));
 		return "home/cart";
 	}
-	
+
 }

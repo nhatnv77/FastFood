@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.Product;
 
-@Transactional
 @Controller
+@Transactional
 public class MainController {
 	@Autowired
 	SessionFactory factory;
