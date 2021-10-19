@@ -145,7 +145,7 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="${root}/resources/login/images/img-01.png" alt="IMG">
 				</div>
-			<form:form action="dangky.htm" modelAttribute="user">
+			<form:form action="register.htm" modelAttribute="user">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title">
 						Đăng ký
@@ -204,13 +204,13 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input">
-						<form:errors path="username" />
-						<form:errors path="password" />
-						<form:errors path="email" />
-						<form:errors path="name" />
-						<form:errors path="phone" />
-						<form:errors path="address" />
-						<div style="color: red;">${message}</div>
+						<form:errors path="username" style="color: red "/>
+						<form:errors path="password" style="color: red"/>
+						<form:errors path="email" style="color: red"/>
+						<form:errors path="name" style="color: red"/>
+						<form:errors path="phone" style="color: red"/>
+						<form:errors path="address" style="color: red"/>
+						<%-- <div style="color: red;">${message}</div> --%>
 					</div>
 					
 					

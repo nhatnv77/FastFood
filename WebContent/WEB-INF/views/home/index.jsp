@@ -12,6 +12,30 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="${root}/resources/img/core-img/favicon.ico">
+
+<!--===============================================================================================-->
+<link rel="icon" type="image/png"
+	href="${root}/resources/login/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/util.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/main.css">
 <link rel="stylesheet" href="${root}/resources/style.css">
 </head>
 <body>
@@ -77,7 +101,8 @@
 							<!-- Nav Start -->
 							<div class="classynav">
 								<ul>
-									<li class="active"><a href="${root}/home.htm">Trang chủ</a></li>
+									<li class="active"><a href="${root}/home.htm">Trang
+											chủ</a></li>
 									<li><a href="${root}/food.htm">Thức ăn</a></li>
 									<li><a href="${root}/drink.htm">Thức uống</a></li>
 									<li><a href="${root}/contact.htm">Liên hệ</a></li>
@@ -88,7 +113,8 @@
 												<li><a href="${root}/account/register.htm">Đăng ký</a></li>
 											</c:if>
 											<c:if test="${sessionScope.tk != null}">
-												<li><a href="${root}/account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="${root}/account/update.htm">Thay đổi
+														thông tin</a></li>
 												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
 											</c:if>
 										</ul></li>

@@ -11,25 +11,34 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Đăng nhập</title>
-<link rel="icon" href="resources/img/core-img/favicon.ico">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/login/images/icons/favicon.ico"/>
+<link rel="icon" href="${root}/resources/img/core-img/favicon.ico">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="icon" type="image/png"
+	href="${root}/resources/login/images/icons/favicon.ico" />
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/vendor/css-hamburgers/hamburgers.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/animate/animate.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/css/util.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/login/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/util.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/main.css">
 <!--===============================================================================================-->
 <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
+<link rel="stylesheet"
+	href="${root}/resources/style.css">
 </head>
 <body>
 	<header class="header-area">
@@ -110,7 +119,8 @@
 												<li><a href="${root}/account/register.htm">Đăng ký</a></li>
 											</c:if>
 											<c:if test="${sessionScope.tk != null}">
-												<li><a href="${root}/account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="${root}/account/update.htm">Thay đổi
+														thông tin</a></li>
 												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
 											</c:if>
 										</ul></li>
@@ -139,190 +149,223 @@
 		</div>
 	</header>
 
-	
-	     	<div class="limiter">
+	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="${pageContext.request.contextPath}/resources/login/images/img-01.png" alt="IMG">
+					<img
+						src="${root}/resources/login/images/img-01.png"
+						alt="IMG">
 				</div>
 				<form:form action="login.htm" modelAttribute="user">
-						<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Đăng nhập
-					</span>
+					<form class="login100-form validate-form">
+						<span class="login100-form-title"> Đăng nhập </span>
 
-					<div class="wrap-input100 validate-input" >
-						<form:input class="input100" type="text" path="username" placeholder="Username"/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
-						</span>
-					</div>
+						<div class="wrap-input100 validate-input">
+							<form:input class="input100" type="text" path="username"
+								placeholder="Username" />
+							<span class="focus-input100"></span> <span
+								class="symbol-input100"> <i class="fa fa-user"
+								aria-hidden="true"></i>
+							</span>
+						</div>
 
-					<div class="wrap-input100 validate-input">
-						<form:input class="input100" type="password" path="password" placeholder="Password"/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input">
-						<form:errors path="username" style="color: red"/>
-						<form:errors path="password" style="color: red"/>
-						<span style="color: red">${message}</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
+						<div class="wrap-input100 validate-input">
+							<form:input class="input100" type="password" path="password"
+								placeholder="Password" />
+							<span class="focus-input100"></span> <span
+								class="symbol-input100"> <i class="fa fa-lock"
+								aria-hidden="true"></i>
+							</span>
+						</div>
 
+						<div class="wrap-input100 validate-input">
+							<form:errors path="username" style="color: red" />
+							<form:errors path="password" style="color: red" />
+							<%-- <span style="color: red">${message}</span> --%>
+						</div>
 
-					<div class="text-center p-t-136">
-						<a class="txt2" href="${root}/account/register.htm">
-							Tạo tài khoản mới ngay!
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn">Login</button>
+
+						</div>
+						<div class="text-center p-t-60vn">
+							<a class="txt2" href="${root}/account/register.htm"> Tạo tài
+								khoản mới ngay! <i class="fa fa-long-arrow-right m-l-5"
+								aria-hidden="true"></i>
+							</a>
+						</div>
+					</form>
 				</form:form>
-				
+
 			</div>
 		</div>
 	</div>
-	
-	 <!-- ##### Follow Us Instagram Area Start ##### -->
-    <div class="follow-us-instagram">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h5>Theo dõi Instragram</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Instagram Feeds -->
-        <div class="insta-feeds d-flex flex-wrap">
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta1.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
 
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta2.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
+	<!-- ##### Follow Us Instagram Area Start ##### -->
+	<div class="follow-us-instagram">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h5>Theo dõi Instragram</h5>
+				</div>
+			</div>
+		</div>
+		<!-- Instagram Feeds -->
+		<div class="insta-feeds d-flex flex-wrap">
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta1.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta3.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta2.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta4.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta3.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta5.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta4.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta6.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta5.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="${pageContext.request.contextPath}/resources/img/bg-img/insta7.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Follow Us Instagram Area End ##### -->
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta6.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
 
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
-                    <!-- Footer Social Info -->
-                    <div class="footer-social-info text-right">
-                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                    </div>
-                    <!-- Footer Logo -->
-                    <div class="footer-logo">
-                        <a href="index.html"><img src="${pageContext.request.contextPath}/resources/img/core-img/logo.png" alt=""></a>
-                    </div>
-                    <!-- Copywrite -->
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Nam Nguyen</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-	
-		<script src="${pageContext.request.contextPath}/resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="${pageContext.request.contextPath}/resources/login/vendor/bootstrap/js/popper.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="${pageContext.request.contextPath}/resources/login/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="${pageContext.request.contextPath}/resources/login/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
+			<!-- Single Insta Feeds -->
+			<div class="single-insta-feeds">
+				<img
+					src="${root}/resources/img/bg-img/insta7.jpg"
+					alt="">
+				<!-- Icon -->
+				<div class="insta-icon">
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ##### Follow Us Instagram Area End ##### -->
+
+	<!-- ##### Footer Area Start ##### -->
+	<footer class="footer-area">
+		<div class="container h-100">
+			<div class="row h-100">
+				<div
+					class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+					<!-- Footer Social Info -->
+					<div class="footer-social-info text-right">
+						<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> <a
+							href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a> <a
+							href="#"><i class="fa fa-behance" aria-hidden="true"></i></a> <a
+							href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+					</div>
+					<!-- Footer Logo -->
+					<div class="footer-logo">
+						<a href="index.html"><img
+							src="${root}/resources/img/core-img/logo.png"
+							alt=""></a>
+					</div>
+					<!-- Copywrite -->
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Nam Nguyen</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script
+		src="${root}/resources/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/vendor/bootstrap/js/popper.js"></script>
+	<script
+		src="${root}/resources/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/vendor/tilt/tilt.jquery.min.js"></script>
+	<script>
 		$('.js-tilt').tilt({
-			scale: 1.1
+			scale : 1.1
 		})
 	</script>
-<!--===============================================================================================-->
-	<script src="${pageContext.request.contextPath}/resources/login/js/main.js"></script>
-	
-	     <!-- jQuery-2.2.4 js -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="${pageContext.request.contextPath}/resources/js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="${pageContext.request.contextPath}/resources/js/active.js"></script>
+	<!--===============================================================================================-->
+	<script
+		src="${root}/resources/login/js/main.js"></script>
+
+	<!-- jQuery-2.2.4 js -->
+	<script
+		src="${root}/resources/js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- Popper js -->
+	<script
+		src="${root}/resources/js/bootstrap/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script
+		src="${root}/resources/js/bootstrap/bootstrap.min.js"></script>
+	<!-- All Plugins js -->
+	<script
+		src="${root}/resources/js/plugins/plugins.js"></script>
+	<!-- Active js -->
+	<script src="${root}/resources/js/active.js"></script>
 </body>
 </html>
