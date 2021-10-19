@@ -78,8 +78,8 @@
 						id="deliciousNav">
 
 						<!-- Logo -->
-						<a class="nav-brand" href="home.htm"><img
-							src="resources/img/core-img/logo.png" alt=""></a>
+						<a class="nav-brand" href="${root}/home.htm"><img
+							src="${root}/resources/img/core-img/logo.png" alt=""></a>
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
@@ -99,30 +99,30 @@
 							<!-- Nav Start -->
 							<div class="classynav">
 								<ul>
-									<li><a href="home.htm">Trang chủ</a></li>
-									<li><a href="food.htm">Thức ăn</a></li>
-									<li><a href="drink.htm">Thức uống</a></li>
-									<li><a href="contact.htm">Liên hệ</a></li>
+									<li><a href="${root}/home.htm">Trang chủ</a></li>
+									<li><a href="${root}/food.htm">Thức ăn</a></li>
+									<li><a href="${root}/drink.htm">Thức uống</a></li>
+									<li><a href="${root}/contact.htm">Liên hệ</a></li>
 									<li class="active"><a href="#">Tài khoản</a>
 										<ul class="dropdown">
 											<c:if test="${sessionScope.tk == null}">
-												<li><a href="account/login.htm">Đăng nhập</a></li>
-												<li><a href="account/register.htm">Đăng ký</a></li>
+												<li><a href="${root}/account/login.htm">Đăng nhập</a></li>
+												<li><a href="${root}/account/register.htm">Đăng ký</a></li>
 											</c:if>
 											<c:if test="${sessionScope.tk != null}">
-												<li><a href="account/logout.htm">Đăng xuất</a></li>
+												<li><a href="${root}/account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
 											</c:if>
 										</ul></li>
 
 									<c:if test="${sessionScope.tk == null}">
-										<li><a href="account/login.htm">Cart<i
+										<li><a href="${root}/account/login.htm">Cart<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 									<c:if test="${sessionScope.tk != null}">
-										<li><a href="cart.htm">Giỏ hàng<i
+										<li><a href="${root}/cart.htm">Giỏ hàng<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
-
 								</ul>
 
 								<!-- Newsletter Form -->
@@ -149,7 +149,7 @@
 				<form:form action="login.htm" modelAttribute="user">
 						<form class="login100-form validate-form">
 					<span class="login100-form-title">
-						Sign In
+						Đăng nhập
 					</span>
 
 					<div class="wrap-input100 validate-input" >
@@ -182,8 +182,8 @@
 
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="dangky.htm">
-							Create your Account
+						<a class="txt2" href="${root}/account/register.htm">
+							Tạo tài khoản mới ngay!
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -199,7 +199,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h5>Follow Us Instragram</h5>
+                    <h5>Theo dõi Instragram</h5>
                 </div>
             </div>
         </div>

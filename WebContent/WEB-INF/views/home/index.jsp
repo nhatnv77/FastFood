@@ -60,7 +60,7 @@
 					<nav class="classy-navbar justify-content-between"
 						id="deliciousNav">
 						<!-- Logo -->
-						<a class="nav-brand" href="home.htm"><img
+						<a class="nav-brand" href="${root}/home.htm"><img
 							src="${root}/resources/img/core-img/logo.png" alt=""></a>
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
@@ -407,7 +407,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h5>Follow Us Instragram</h5>
+					<h5>Theo dõi Instragram</h5>
 				</div>
 			</div>
 		</div>

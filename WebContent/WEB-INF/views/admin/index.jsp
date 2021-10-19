@@ -71,7 +71,7 @@
 			<!--       </li> -->
 
 			<li class="nav-item"><a class="nav-link"
-				href="home/trangchu.htm"> <i class="fa fa-power-off"></i> <span>ĐĂNG
+				href="${root}/account/logout.htm"> <i class="fa fa-power-off"></i> <span>ĐĂNG
 						XUẤT</span></a></li>
 
 			<!-- Divider -->

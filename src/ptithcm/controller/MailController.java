@@ -33,7 +33,7 @@ public class MailController {
 			//Sử dụng lớp trợ giúp
 			MimeMessageHelper helper= new MimeMessageHelper(mail);
 			helper.setFrom(from,from);
-			helper.setTo("n17dccn102@student.ptithcm.edu.vn");
+			helper.setTo("n18dccn139@student.ptithcm.edu.vn");
 			helper.setReplyTo(from,from);
 			helper.setSubject(subject);
 			helper.setText(body,true);

@@ -66,7 +66,7 @@
 						<div class="top-social-info text-right">
 							<c:if test="${sessionScope.tk != null}">
 								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>
-									Xin chào ${sessionScope.tk}</a>
+									Xin chào ${sessionScope.tk} ♥</a>
 							</c:if>
 							<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
 							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -239,7 +239,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h5>Follow Us Instragram</h5>
+					<h5>Theo dõi Instragram</h5>
 				</div>
 			</div>
 		</div>

@@ -69,14 +69,14 @@ public class AccountController {
 	}
 	
 	// Đăng kí tài khoản
-		@RequestMapping(value="dangky",method=RequestMethod.GET)
-		public String dangky(ModelMap model){
+		@RequestMapping(value="register",method=RequestMethod.GET)
+		public String register(ModelMap model){
 			model.addAttribute("user", new User());
-			return "home/dangky";
+			return "home/register";
 		}
 		
-		@RequestMapping(value="dangky",method=RequestMethod.POST)
-		public String dangky(ModelMap model,
+		@RequestMapping(value="register",method=RequestMethod.POST)
+		public String register(ModelMap model,
 			@ModelAttribute("user") User user,
 			BindingResult errors){
 			Session session = factory.getCurrentSession();
@@ -86,7 +86,7 @@ public class AccountController {
 			User acc = (User) query.uniqueResult();
 			if(acc!=null){
 				model.addAttribute("message", "Tài khoản đã tồn tại !");
-				return "home/dangky";
+				return "home/register";
 			}
 			else if(user.getUsername().trim().length()==0){
 				errors.rejectValue("username", "user", "Tên tài khoản không được trống !");
@@ -108,7 +108,7 @@ public class AccountController {
 			}
 			else if(errors.hasErrors()){
 				model.addAttribute("message", "Vui lòng sửa các lỗi sau đây !");
-				return "home/dangky";
+				return "home/register";
 			}
 			else{
 				model.addAttribute("message", "Chúc mừng bạn đã nhập đúng !");
@@ -122,7 +122,7 @@ public class AccountController {
 					model.addAttribute("message", "Thêm mới thất bại !");
 				}
 			}
-			return "home/dangky";
+			return "home/register";
 		}
 		
 		//Logout
