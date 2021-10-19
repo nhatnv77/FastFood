@@ -221,7 +221,7 @@
 					</div>
 
 
-					<div class="text-center p-t-136">
+					<div class="text-center p-t-50">
 					</div>
 				</form>
 			</form:form>
