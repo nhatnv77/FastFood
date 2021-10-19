@@ -176,7 +176,7 @@
 						<div class="shop-inner">
 							<div class="product-grid-area">
 								<ul class="products-grid"
-									style="display: inline-flex; flex-flow: wrap;">
+									style="display: flex; flex-flow: wrap;">
 									<c:forEach var="item" items="${pagedListHolder.pageList}">
 										<li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 "
 											style="height: 20%; width: 20%">

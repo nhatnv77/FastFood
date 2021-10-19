@@ -81,7 +81,7 @@ public class MainController {
 		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
 		pagedListHolder.setPage(page);
 		pagedListHolder.setMaxLinkedPages(20);
-		pagedListHolder.setPageSize(10);
+		pagedListHolder.setPageSize(8);
 		model.addAttribute("pagedListHolder", pagedListHolder);
 
 		return "home/drinks";
