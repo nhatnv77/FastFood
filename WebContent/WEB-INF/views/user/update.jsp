@@ -115,7 +115,7 @@ display: flex;
       <div id="content">
 
         <div class="container-fluid" style="margin-left: 210px; margin-top: 100px;">
-				<form:form action="insertkh.htm" modelAttribute="users" method="post">
+				<form:form action="insertUser.htm" modelAttribute="users" method="post">
 				<div class="ip">
 						<label>Mã KH</label>
 						<form:input path="idUser" readonly="true"/>

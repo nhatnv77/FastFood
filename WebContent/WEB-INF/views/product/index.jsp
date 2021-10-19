@@ -126,7 +126,7 @@
 					<td>${item.number}</td>
 					<td>
 						<a href = "updatesp/${item.idProduct}.htm" class="btn btn-primary">Sửa</a>
-						<a href = "deletesp/${item.idProduct}.htm" class="btn btn-danger xoa-hh">Xóa</a>
+						<a href = "deleteProduct/${item.idProduct}.htm" class="btn btn-danger xoa-hh">Xóa</a>
 					</td>
 				</tr>
 			</c:forEach>

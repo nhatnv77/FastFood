@@ -4,19 +4,21 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <c:set var="root" value="${pageContext.servletContext.contextPath}" />
-<base href="${pageContext.servletContext.contextPath}/">
 <head>
 <title>CHI TIẾT SẢN PHẨM</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<link rel="icon" type="image/png" href="${root}/resources/login/images/icons/favicon.ico" />
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="resources/img/core-img/favicon.ico">
+<link rel="stylesheet" href="resources/style.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/login/css/util.css">
@@ -84,7 +86,7 @@
 
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
-							<span class="navbarToggler"><span></span><span></span><span></span></span>
+							<span class="navbarToggler"></span>
 						</div>
 
 						<!-- Menu -->
@@ -102,27 +104,30 @@
 								<ul>
 									<li><a href="${root}/home.htm">Trang chủ</a></li>
 									<li><a href="${root}/food.htm">Thức ăn</a></li>
-									<li class="active"><a href="${root}/drink.htm">Thức	uống</a></li>
+									<li class="active"><a href="${root}/drink.htm">Thức uống</a></li>
 									<li><a href="${root}/contact.htm">Liên hệ</a></li>
 									<li><a href="#">Tài khoản</a>
 										<ul class="dropdown">
-											<li><a href="${root}/account/login.htm">Đăng nhập</a></li>
-											<c:if test="${sessionScope.tk != null}">
-												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
+											<c:if test="${sessionScope.tk == null}">
+												<li><a href="account/login.htm">Đăng nhập</a></li>
+												<li><a href="account/register.htm">Đăng ký</a></li>
 											</c:if>
-
-											<li><a href="${root}/account/register.htm">Đăng ký</a></li>
+											<c:if test="${sessionScope.tk != null}">
+												<li><a href="account/update.htm">Thay đổi thông tin</a></li>
+												<li><a href="account/logout.htm">Đăng xuất</a></li>
+											</c:if>
 										</ul></li>
-									</li>
+
 									<c:if test="${sessionScope.tk == null}">
-										<li><a href="${root}/account/login.htm">Cart<i
+										<li><a href="account/login.htm">Cart<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 									<c:if test="${sessionScope.tk != null}">
-										<li><a href="cart.htm">Cart<i
+										<li><a href="cart.htm">Giỏ hàng<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 								</ul>
+
 								<!-- Newsletter Form -->
 								<div class="search-btn">
 									<i class="fa fa-search" aria-hidden="true"></i>
@@ -143,7 +148,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-main">
-					<form:form action="chitietsp.htm" modelAttribute="pro">
+					<form:form action="${root}/cart/add.htm" modelAttribute="prod">
 						<div class="product-view-area">
 							<div
 								class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">

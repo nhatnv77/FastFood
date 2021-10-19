@@ -176,7 +176,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="p" items="${listGioHang}">
+					<c:forEach var="p" items="${listCart}">
 					<tr>
 						<td data-th="Product">
 							<div class="row">
@@ -197,7 +197,7 @@
 						</td>
 						<td data-th="Subtotal" class="text-center">${ p.price * p.amount }</td>
 						<td class="actions" data-th="">
-							<button class="btn btn-danger btn-sm"><a href="deletegh.htm?idSanPham=${ p.id }"/>
+							<button class="btn btn-danger btn-sm"><a href="deleteItem.htm?id=${ p.id }"/>
 								<i class="fa fa-trash-o"></i> 
 							</button>
 						</td>

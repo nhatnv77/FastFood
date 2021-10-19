@@ -41,11 +41,11 @@ public class AdminController {
 		return "admin/index";
 	}
 	
-	//Quản lí người dùng
+	//==============Quản lý người dùng==========================
 	@RequestMapping("user")
 	public String user(ModelMap model) {
 		Session session = factory.getCurrentSession();
-		String hql = "from User";
+		String hql = "From User";
 		Query query = session.createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<User> list = query.list();
@@ -53,15 +53,15 @@ public class AdminController {
 		return "user/index";		
 	}
 	
-	@RequestMapping(value="insertkh", method=RequestMethod.GET)
-	public String insertkh(ModelMap model){
+	@RequestMapping(value="insertUser", method=RequestMethod.GET)
+	public String insertUser(ModelMap model){
 		model.addAttribute("user", new User());
 		return "user/insert";
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="insertkh",method=RequestMethod.POST)
-	public String insertkh(ModelMap model, @ModelAttribute("user")User user,
+	@RequestMapping(value="insertUser",method=RequestMethod.POST)
+	public String insertUser(ModelMap model, @ModelAttribute("user")User user,
 			BindingResult errors){
 		Session session = factory.getCurrentSession();
 		String hql = "FROM User " + "WHERE username like '%"+user.getUsername()+"%'";
@@ -174,7 +174,7 @@ public class AdminController {
 		}
 	}
 	
-	//Quản lí sản phẩm
+	//==============Quản lý sản phẩm==========================
 	@RequestMapping("product")
 	public String dssp(ModelMap model){
 		Session se = factory.getCurrentSession();
@@ -235,16 +235,16 @@ public class AdminController {
 		return "product/insert";
 	}
 	
-	@RequestMapping(value = "updatesp/{idProduct}", method = RequestMethod.GET)
-	public String updatesp(ModelMap model, @PathVariable("idProduct")Integer s) {
+	@RequestMapping(value = "updateProduct/{idProduct}", method = RequestMethod.GET)
+	public String updateProduct(ModelMap model, @PathVariable("idProduct")Integer s) {
 		Session session = factory.openSession();
 		Product prod = (Product) session.get(Product.class, s);
 		model.addAttribute("products", prod);
 		return "product/update";
 	}
 	
-	@RequestMapping(value = "updatesp", method = RequestMethod.POST)
-	public String updatesp(ModelMap model, @ModelAttribute("products")Product products,
+	@RequestMapping(value = "updateProduct", method = RequestMethod.POST)
+	public String updateProduct(ModelMap model, @ModelAttribute("products")Product products,
 			BindingResult errors){
 		Session session = factory.getCurrentSession();
 		if(products.getName().trim().length()==0){
@@ -279,8 +279,8 @@ public class AdminController {
 	}
 	
 	@SuppressWarnings("finally")
-	@RequestMapping(value = "deletesp/{idProduct}", method = RequestMethod.GET)
-	public String deletesp(ModelMap model, @PathVariable("idProduct") int maHH) {
+	@RequestMapping(value = "deleteProduct/{idProduct}", method = RequestMethod.GET)
+	public String deleteProduct(ModelMap model, @PathVariable("idProduct") int maHH) {
 		Session se = factory.openSession();
 		Transaction t = se.beginTransaction();
 		Product pro = (Product) se.get(Product.class, maHH);

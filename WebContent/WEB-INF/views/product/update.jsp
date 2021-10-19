@@ -117,7 +117,7 @@ display: flex;
       <div id="content">
 
         <div class="container-fluid" style="margin-left: 210px; margin-top: 100px;">
-				<form:form action="admin/updatesp.htm" modelAttribute="products">
+				<form:form action="admin/updateProduct.htm" modelAttribute="products">
 <%-- 					enctype="multipart/form-data" --%>
 					
 					<div class="ip">

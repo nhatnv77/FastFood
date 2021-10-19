@@ -207,7 +207,7 @@
 																<!-- class="pro-action" -->
 																<c:if test="${sessionScope.tk != null}">
 																	<a
-																		href="${root}/cart/add.htm?id=${item.idProduct}&name=${item.name}&gia=${item.price}&image=${item.image}&soLuong=${1}"
+																		href="${root}/cart/add/${item.idProduct}.htm?sl=${1}"
 																		class="add-to-cart btn btn-danger">Thêm vô giỏ
 																		hàng</a>
 																</c:if>

@@ -115,7 +115,7 @@ display: flex;
       <div id="content">
 
         <div class="container-fluid" style="margin-left: 210px; margin-top: 100px;">
-				<form:form action="insertkh.htm" modelAttribute="user" method="post">
+				<form:form action="insertUser.htm" modelAttribute="user" method="post">
 					<div class="ip">
 						<label>Tên KH</label>
 						<form:input path="name"/>

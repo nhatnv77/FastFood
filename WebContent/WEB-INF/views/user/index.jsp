@@ -102,7 +102,7 @@
 		<h1>Danh sách Khách Hàng</h1>
 		<br/>
 	
-		<a href = "insertkh.htm" class="btn btn-success">Thêm</a>
+		<a href = "insertUser.htm" class="btn btn-success">Thêm</a>
 		<br/>
 		<br/>
 		<table class = "table table-hover table-bordered">
