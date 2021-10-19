@@ -168,10 +168,6 @@
 		<!-- 	CONTENT -->
 		<div class="main-container col1-layout">
 			<div class="container">
-				<div>
-					<tg:paging pagedListHolder="${pagedListHolder}"
-						pagedLink="${pagedLink}" />
-				</div>
 				<div class="row">
 					<div class="col-main col-sm-12 col-xs-12">
 						<div class="shop-inner">
@@ -248,6 +244,10 @@
 
 						</div>
 					</div>
+				</div>
+				<div >
+					<tg:paging pagedListHolder="${pagedListHolder}"
+						pagedLink="${pagedLink}" />
 				</div>
 			</div>
 		</div>

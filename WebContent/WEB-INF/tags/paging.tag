@@ -11,7 +11,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 <c:if test="${pagedListHolder.pageCount > 1}">
-	<ul class="pagination justify-content-end">
+	<ul class="pagination justify-content-center">
 		<c:if test="${!pagedListHolder.firstPage}">
 			<li class="page-item"><a class="page-link"
 				href="<%=StringUtils.replace(pagedLink, "~", String.valueOf(pagedListHolder.getPage() - 1))%>">Previous</a></li>
