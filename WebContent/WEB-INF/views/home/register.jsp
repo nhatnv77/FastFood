@@ -210,7 +210,7 @@
 						<form:errors path="name" style="color: red"/>
 						<form:errors path="phone" style="color: red"/>
 						<form:errors path="address" style="color: red"/>
-						<%-- <div style="color: red;">${message}</div> --%>
+						<span style="color: red">${message}</span> 
 					</div>
 					
 					

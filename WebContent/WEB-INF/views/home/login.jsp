@@ -182,7 +182,7 @@
 						<div class="wrap-input100 validate-input">
 							<form:errors path="username" style="color: red" />
 							<form:errors path="password" style="color: red" />
-							<%-- <span style="color: red">${message}</span> --%>
+							 <span style="color: red">${message}</span> 
 						</div>
 
 						<div class="container-login100-form-btn">
