@@ -59,7 +59,7 @@ public class MainController {
 		pagedListHolder.setPage(page);
 		pagedListHolder.setMaxLinkedPages(20);
 		;
-		pagedListHolder.setPageSize(8);
+		pagedListHolder.setPageSize(4);
 		model.addAttribute("pagedListHolder", pagedListHolder);
 
 		return "home/foods";

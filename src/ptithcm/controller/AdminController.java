@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 
@@ -12,9 +13,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,15 +45,35 @@ public class AdminController {
 	}
 	
 	//==============Quản lý người dùng==========================
-	@RequestMapping("user")
-	public String user(ModelMap model) {
-		Session session = factory.getCurrentSession();
-		String hql = "From User";
-		Query query = session.createQuery(hql);
+	/*
+	 * @RequestMapping("user") public String user(ModelMap model) { Session session
+	 * = factory.getCurrentSession(); String hql = "From User"; Query query =
+	 * session.createQuery(hql);
+	 * 
+	 * @SuppressWarnings("unchecked") List<User> list = query.list();
+	 * model.addAttribute("users", list); return "user/index"; }
+	 */
+	public List<User> getUser() {
+		Session se = factory.getCurrentSession();
+		String hql = "from User";
+		Query query = se.createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<User> list = query.list();
-		model.addAttribute("users", list);
-		return "user/index";		
+		return list;
+	}
+
+	@RequestMapping(value = "user", method = RequestMethod.GET)
+	public String user(HttpServletRequest request, ModelMap model, @ModelAttribute("product") Product product) {
+		List<User> users = this.getUser();
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		PagedListHolder pagedListHolder = new PagedListHolder(users);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
+		pagedListHolder.setPage(page);
+		pagedListHolder.setMaxLinkedPages(20);
+		pagedListHolder.setPageSize(2);
+		model.addAttribute("pagedListHolder", pagedListHolder);
+
+		return "user/index";
 	}
 	
 	@RequestMapping(value="insertUser", method=RequestMethod.GET)
@@ -68,13 +91,13 @@ public class AdminController {
 		Query query = session.createQuery(hql);
 		List<User> list = query.list();	
 		if(user.getName().trim().length()==0){
-			errors.rejectValue("name", "user", "Vui lòng nhập tên !");
+			errors.rejectValue("name", "user", "Vui lòng nhập tên!");
 		}
 		if(user.getAddress().trim().length()==0){
-			errors.rejectValue("address", "user", "Vui lòng nhập địa chỉ !");
+			errors.rejectValue("address", "user", "Vui lòng nhập địa chỉ!");
 		}
 		if(user.getPhone().trim().length()==0){
-			errors.rejectValue("phone", "user", "Vui lòng nhập số điện thoại !");
+			errors.rejectValue("phone", "user", "Vui lòng nhập số điện thoại!");
 		}
 		if(user.getEmail().trim().length()==0){
 			errors.rejectValue("email", "user", "Vui lòng nhập email !");
@@ -86,14 +109,14 @@ public class AdminController {
 			errors.rejectValue("username", "user", "Vui lòng nhập tài khoản !");
 		}
 		else if(list.size()!=0){
-			errors.rejectValue("username", "user", "Tài khoản đã tồn tại !");
+			errors.rejectValue("username", "user", "Tài khoản đã tồn tại!");
 		}
 		
 		try
 			{
 				if (errors.hasErrors()) 
 				{
-					model.addAttribute("message", "Vui lòng sửa các lỗi sau");
+					model.addAttribute("message", "Vui lòng sửa các lỗi");
 				} 
 				else
 				{
@@ -175,17 +198,39 @@ public class AdminController {
 	}
 	
 	//==============Quản lý sản phẩm==========================
-	@RequestMapping("product")
-	public String dssp(ModelMap model){
+	/*
+	 * @RequestMapping("product") public String dssp(ModelMap model){ Session se =
+	 * factory.getCurrentSession(); String hql = "from Product"; Query query =
+	 * se.createQuery(hql);
+	 * 
+	 * @SuppressWarnings("unchecked") List<Product> list = query.list();
+	 * model.addAttribute("products", list); return "product/index"; }
+	 */
+		
+	public List<Product> getProduct() {
 		Session se = factory.getCurrentSession();
 		String hql = "from Product";
 		Query query = se.createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Product> list = query.list();
-		model.addAttribute("products", list);
+		return list;
+	}
+
+	@RequestMapping(value = "product", method = RequestMethod.GET)
+	public String sanpham(HttpServletRequest request, ModelMap model, @ModelAttribute("product") Product product) {
+		List<Product> products = this.getProduct();
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		PagedListHolder pagedListHolder = new PagedListHolder(products);
+		int page = ServletRequestUtils.getIntParameter(request, "p", 0);
+		pagedListHolder.setPage(page);
+		pagedListHolder.setMaxLinkedPages(20);
+		pagedListHolder.setPageSize(8);
+		model.addAttribute("pagedListHolder", pagedListHolder);
+
 		return "product/index";
 	}
-		
+	
+	
 	@Autowired
 	ServletContext context;
 	
@@ -261,7 +306,7 @@ public class AdminController {
 			{
 				if (errors.hasErrors()) 
 				{
-					model.addAttribute("message", "Vui lòng sửa các lỗi sau");
+					model.addAttribute("message", "Vui lòng sửa các lỗi");
 				} 
 				else
 				{
