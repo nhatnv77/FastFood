@@ -164,7 +164,7 @@
 		<c:url value="/food.htm" var="pagedLink">
 			<c:param name="p" value="~" />
 		</c:url>
-
+	</div>
 
 
 		<!-- 	CONTENT -->

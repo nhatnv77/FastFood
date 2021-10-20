@@ -2486,7 +2486,7 @@ a.link:hover {
 	transition: 0.5s all ease;
 }
 .product-item .item-inner .item-info .add-to-cart:hover {
-	background-color: #444;
+	/* background-color: #444; */
 	border: 1px #444 solid;
 	transition: 0.5s all ease;
 }

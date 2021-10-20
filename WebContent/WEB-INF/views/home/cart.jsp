@@ -11,7 +11,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="${root}/resources/img/core-img/favicon.ico">
+<link rel="icon" href="${root }/resources/img/core-img/favicon.ico">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/util.css">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/login/css/main.css">
+<!--===============================================================================================-->
+<!-- Core Stylesheet -->
+<link rel="stylesheet" href="${root}/resources/doan/css/style.css">
 <link rel="stylesheet" href="${root}/resources/style.css">
 </head>
 <body>
@@ -153,8 +167,14 @@
 							</div>
 						</td>
 						<td data-th="Price">${ p.price }VNĐ</td>
-						<td data-th="Quantity"><input
-							class="form-control text-center" value="${ p.amount }"></td>
+						<td data-th="Quantity">
+						<%-- <form action="#" method="post">
+								<input	class="form-control text-center" id="qty" value="${ p.amount }" maxlength="10"
+								oninput="var qty = document.getElementById('qty').value; 
+												if (${prod.number}<qty) document.getElementById('
+												qty').value=${prod.number};"
+								>
+								</form> --%>
 						<td data-th="Subtotal" class="text-center">${ p.price * p.amount }</td>
 						<td class="actions" data-th=""><a
 							href="${root}/cart/deleteItem.htm?id=${p.id}">
@@ -317,11 +337,8 @@
 	<script src="${root}/resources/js/bootstrap/popper.min.js"></script>
 	<!-- Bootstrap js -->
 	<script src="${root}/resources/js/bootstrap/bootstrap.min.js"></script>
-	<!-- All Plugins js -->
-	<script src="${root}/resources/js/plugins/plugins.js"></script>
 	<!-- Active js -->
 	<script src="${root}/resources/js/active.js"></script>
-
 
 	<script type="text/javascript"
 		src="${root}/resources/doan/js/jquery.min.js"></script>

@@ -5,7 +5,7 @@
 <html>
 <c:set var="root" value="${pageContext.servletContext.contextPath}" />
 <head>
-<title>Giỏ hàng</title>
+<title>Liên hệ</title>
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -383,7 +383,7 @@
 	<!-- Bootstrap js -->
 	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
 	<!-- All Plugins js -->
-	<script src="resources/js/plugins/plugins.js"></script>
+	<script src="${root }/resources/js/plugins/plugins.js"></script>
 	<!-- Active js -->
 	<script src="resources/js/active.js"></script>
 </body>

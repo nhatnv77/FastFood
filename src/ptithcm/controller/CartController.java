@@ -48,15 +48,10 @@ public class CartController {
 		return tongTien;
 	}
 
-	public Product findProduct(int code) {
-		Session session = factory.getCurrentSession();
-		Criteria crit = session.createCriteria(Product.class);
-		crit.add(Restrictions.eq("code", code));
-		return (Product) crit.uniqueResult();
-	}
-
 	@RequestMapping(value = "add/{idProduct}")
-	public String giohang(ModelMap model, @PathVariable("idProduct") int idProd, @RequestParam("sl") int amount) {
+	public String giohang(ModelMap model,
+			@PathVariable("idProduct") int idProd, 
+			@RequestParam("sl") int amount) {
 		if (amount <= 0) {
 			return "home/cart";
 		}

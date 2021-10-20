@@ -11,8 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="resources/img/core-img/favicon.ico">
-<link rel="stylesheet" href="resources/style.css">
+<link rel="icon" href="${root }/resources/img/core-img/favicon.ico">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/login/vendor/bootstrap/css/bootstrap.min.css">
@@ -104,26 +103,27 @@
 								<ul>
 									<li><a href="${root}/home.htm">Trang chủ</a></li>
 									<li><a href="${root}/food.htm">Thức ăn</a></li>
-									<li class="active"><a href="${root}/drink.htm">Thức uống</a></li>
+									<li><a href="${root}/drink.htm">Thức uống</a></li>
 									<li><a href="${root}/contact.htm">Liên hệ</a></li>
 									<li><a href="#">Tài khoản</a>
 										<ul class="dropdown">
 											<c:if test="${sessionScope.tk == null}">
-												<li><a href="account/login.htm">Đăng nhập</a></li>
-												<li><a href="account/register.htm">Đăng ký</a></li>
+												<li><a href="${root}/account/login.htm">Đăng nhập</a></li>
+												<li><a href="${root}/account/register.htm">Đăng ký</a></li>
 											</c:if>
 											<c:if test="${sessionScope.tk != null}">
-												<li><a href="account/update.htm">Thay đổi thông tin</a></li>
-												<li><a href="account/logout.htm">Đăng xuất</a></li>
+												<li><a href="${root}/account/update.htm">Thay đổi
+														thông tin</a></li>
+												<li><a href="${root}/account/logout.htm">Đăng xuất</a></li>
 											</c:if>
 										</ul></li>
 
 									<c:if test="${sessionScope.tk == null}">
-										<li><a href="account/login.htm">Cart<i
+										<li><a href="${root}/account/login.htm">Cart<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 									<c:if test="${sessionScope.tk != null}">
-										<li><a href="cart.htm">Giỏ hàng<i
+										<li><a href="${root}/cart.htm">Giỏ hàng<i
 												class="fa fa-shopping-cart"></i></a></li>
 									</c:if>
 								</ul>
@@ -199,35 +199,48 @@
 									dinh dương đáp ứng đủ nhu cầu của khách hàng.</p>
 							</div>
 							<div class="product-variation">
-								<form action="/giohang.htm" method="post">
-									<div class="cart-plus-minus">
+								<div class="cart-plus-minus">
+									<form action="cart.htm" method="post">
 										<label for="qty">Số Lượng:</label>
 										<div class="numbers-row">
 											<div
-												onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;"
+												onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) && qty > 0 ) result.value--;return false;"
 												class="dec qtybutton">
-												<i class="fa fa-minus">&nbsp;</i>
+												<i class="fa fa-minus"> </i>
 											</div>
-											<input type="text" class="qty" title="Qty" value="1"
-												maxlength="12" id="qty" name="qty">
+											<input type="text" class="qty" value="1" maxlength="12"
+												id="qty" name="qty"
+												oninput="var qty = document.getElementById('qty').value; 
+												if (${prod.number}<qty) document.getElementById('
+												qty').value=${prod.number};">
 											<div
-												onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"
+												onClick="var result = document.getElementById('qty');
+												 var qty = result.value; 
+												 if( !isNaN( qty ) && (qty<${prod.number})) result.value++;return false;"
 												class="inc qtybutton">
-												<i class="fa fa-plus">&nbsp;</i>
+												<i class="fa fa-plus"> </i>
 											</div>
 										</div>
-									</div>
-									<%-- 	                  <button class="add-to-cart  button pro-add-to-cart abc" data-id="${prod.idProduct} id="btncart" > --%>
-									<!-- 	                	<span><i class="fa fa-shopping-basket"></i> Thêm vô giỏ hàng</span> -->
-									<!-- 	                  </button> -->
+								</div>
+								<script type="text/javascript">
+										function add(){
+											var kq =  document.getElementById('qty').value;
+											window.location.assign("${root}/cart/add/${prod.idProduct}.htm?sl="+kq);
+										}
+									</script>
+								<c:if test="${sessionScope.tk == null}">
 									<a class=" btn btn-danger abc" type="button"
-										href="${root}/giohang.htm?
-						id=${prod.idProduct}&name=${prod.name}&gia=${prod.price}&image=${prod.image}&soLuong=${3}">
+										href="${root}/account/login.htm"> <span><i
+											class="fa fa-shopping-basket"></i> Thêm vô giỏ hàng</span>
+									</a>
+								</c:if>
+								<c:if test="${sessionScope.tk != null}">
+									<a class=" btn btn-danger abc" type="button" onclick="add()">
 										<span><i class="fa fa-shopping-basket"></i> Thêm vô giỏ
 											hàng</span>
 									</a>
+								</c:if>
 								</form>
-
 							</div>
 						</div>
 					</form:form>
